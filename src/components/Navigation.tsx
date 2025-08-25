@@ -16,32 +16,31 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border shadow-card z-50">
-      <div className="flex justify-around items-center px-4 py-3">
-        {navItems.map(({ path, icon: Icon, label }) => {
-          const isActive = location.pathname === path;
-          const isEmergency = path === "/emergency";
-          
-          return (
-            <Button
-              key={path}
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate(path)}
-              className={cn(
-                "flex flex-col items-center gap-1 h-auto py-2 px-3 rounded-xl transition-all duration-200",
-                isActive && "bg-primary/10 text-primary",
-                isEmergency && "text-destructive hover:bg-destructive/10"
-              )}
-            >
-              <Icon size={20} className={cn(
-                "transition-transform duration-200",
-                isActive && "scale-110"
-              )} />
-              <span className="text-xs font-medium">{label}</span>
-            </Button>
-          );
-        })}
+    <nav className="fixed bottom-0 left-0 right-0 pb-6 pt-4 bg-gradient-to-t from-background/80 to-transparent z-50">
+      <div className="flex items-center justify-center">
+        <div className="flex items-center gap-1 bg-black/90 backdrop-blur-xl rounded-full p-2 shadow-2xl border border-white/10">
+          {navItems.map(({ path, icon: Icon }) => {
+            const isActive = location.pathname === path;
+            const isEmergency = path === "/emergency";
+
+            return (
+              <button
+                key={path}
+                onClick={() => navigate(path)}
+                className={cn(
+                  "w-12 h-12 flex items-center justify-center rounded-full transition-all duration-200 border",
+                  isActive
+                    ? "bg-[#5a339f] text-white border-[#5a339f]"
+                    : "bg-black/60 text-white border-white/10 hover:bg-black/70",
+                  isEmergency && !isActive && "text-destructive"
+                )}
+                aria-label={path}
+              >
+                <Icon size={18} />
+              </button>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );
