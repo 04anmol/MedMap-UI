@@ -87,7 +87,7 @@ const ResourceMap = () => {
       </header>
 
       {/* Map Container */}
-      <div className="flex-1 relative bg-gradient-to-br from-muted/20 to-muted/40 overflow-hidden">
+      <div className="flex-1 relative bg-muted overflow-hidden">
         {/* Simulated Map Background */}
         <div className="absolute inset-0 opacity-20">
           <svg className="w-full h-full" viewBox="0 0 400 600">

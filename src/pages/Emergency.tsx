@@ -82,7 +82,7 @@ const Emergency = () => {
 
   const renderRequestStep = () => (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-6 text-center">
-      <div className="w-32 h-32 bg-gradient-emergency rounded-full flex items-center justify-center mb-8 animate-pulse">
+      <div className="w-32 h-32 bg-destructive rounded-full flex items-center justify-center mb-8 animate-pulse">
         <AlertTriangle className="h-16 w-16 text-white" />
       </div>
       
@@ -118,7 +118,7 @@ const Emergency = () => {
 
   const renderConfirmingStep = () => (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-6 text-center">
-      <div className="w-32 h-32 bg-gradient-primary rounded-full flex items-center justify-center mb-8">
+      <div className="w-32 h-32 bg-primary rounded-full flex items-center justify-center mb-8">
         <Activity className="h-16 w-16 text-white animate-pulse" />
       </div>
       
@@ -149,7 +149,7 @@ const Emergency = () => {
   const renderDispatchedStep = () => (
     <div className="px-6 py-8">
       <div className="text-center mb-8">
-        <div className="w-24 h-24 bg-gradient-success rounded-full flex items-center justify-center mb-4 mx-auto">
+        <div className="w-24 h-24 bg-success rounded-full flex items-center justify-center mb-4 mx-auto">
           <Car className="h-12 w-12 text-white" />
         </div>
         <h1 className="text-2xl font-bold mb-2">Ambulance Dispatched!</h1>
@@ -168,7 +168,7 @@ const Emergency = () => {
             <h3 className="font-semibold">{ambulanceData.driver}</h3>
             <p className="text-muted-foreground text-sm">Driver • Unit #{ambulanceData.id}</p>
           </div>
-          <Badge variant="default" className="bg-gradient-success text-white">
+          <Badge variant="default" className="bg-success text-white">
             Dispatched
           </Badge>
         </div>
@@ -223,7 +223,7 @@ const Emergency = () => {
   const renderEnrouteStep = () => (
     <div className="px-6 py-8">
       <div className="text-center mb-8">
-        <div className="w-24 h-24 bg-gradient-accent rounded-full flex items-center justify-center mb-4 mx-auto animate-pulse">
+        <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mb-4 mx-auto animate-pulse">
           <Car className="h-12 w-12 text-white" />
         </div>
         <h1 className="text-2xl font-bold mb-2">En Route</h1>
@@ -241,7 +241,7 @@ const Emergency = () => {
       <div className="medmap-card mb-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
               <User className="h-5 w-5 text-white" />
             </div>
             <div>
@@ -249,7 +249,7 @@ const Emergency = () => {
               <p className="text-muted-foreground text-sm">Unit #{ambulanceData.id}</p>
             </div>
           </div>
-          <Badge variant="default" className="bg-gradient-accent text-white">
+          <Badge variant="default" className="bg-accent text-white">
             En Route
           </Badge>
         </div>
@@ -282,7 +282,7 @@ const Emergency = () => {
 
   const renderArrivedStep = () => (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-6 text-center">
-      <div className="w-32 h-32 bg-gradient-success rounded-full flex items-center justify-center mb-8">
+      <div className="w-32 h-32 bg-success rounded-full flex items-center justify-center mb-8">
         <Heart className="h-16 w-16 text-white" />
       </div>
       
@@ -310,7 +310,7 @@ const Emergency = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-background">
       {/* Header */}
       {step !== "request" && (
         <header className="bg-card/90 backdrop-blur-lg border-b border-border px-4 py-4 sticky top-0 z-10">

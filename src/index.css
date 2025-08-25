@@ -8,64 +8,64 @@
 
 @layer base {
   :root {
-    /* MedMap Friendly Color Palette */
-    --background: 220 15% 97%;
-    --foreground: 215 20% 25%;
+    /* MedMap Palette (updated) */
+    --background: 0 0% 100%; /* White */
+    --foreground: 210 28% 24%; /* Dark Gray #2C3E50 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 20% 25%;
+    --card: 266 60% 96%; /* Light Lavender #F4EEFB */
+    --card-foreground: 210 28% 24%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 215 20% 25%;
 
-    /* Soft Blue Primary */
-    --primary: 220 75% 60%;
+    /* Deep Purple Primary #5A339F */
+    --primary: 266 51% 41%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 220 75% 75%;
-    --primary-glow: 220 75% 85%;
+    --primary-light: 266 51% 55%;
+    --primary-glow: 266 51% 75%;
 
-    /* Gentle Violet Secondary */
-    --secondary: 285 55% 65%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 285 55% 80%;
+    /* Secondary kept for compatibility (lighter lavender) */
+    --secondary: 270 45% 85%;
+    --secondary-foreground: 210 28% 24%;
+    --secondary-light: 270 45% 92%;
 
-    /* Warm Orange Accent */
-    --accent: 30 90% 65%;
+    /* Teal Accent (positive) #1ABC9C */
+    --accent: 168 76% 42%;
     --accent-foreground: 0 0% 100%;
-    --accent-light: 30 90% 80%;
+    --accent-light: 168 60% 55%;
 
-    /* Soft Pink Support */
+    /* Support palette retained */
     --pink: 320 60% 75%;
     --pink-foreground: 0 0% 100%;
 
-    /* Soft Green Success */
-    --success: 150 60% 55%;
+    /* Positive/Success -> Teal #1ABC9C */
+    --success: 168 76% 42%;
     --success-foreground: 0 0% 100%;
 
-    --muted: 220 15% 94%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 266 60% 96%; /* Light Lavender for subtle sections */
+    --muted-foreground: 184 7% 53%; /* Medium Gray #7F8C8D */
 
-    --destructive: 355 75% 65%;
+    --destructive: 6 78% 57%; /* Emergency Red #E74C3C */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 94%;
-    --ring: 220 75% 70%;
+    --border: 266 20% 90%;
+    --input: 266 60% 96%;
+    --ring: 266 51% 41%;
 
     --warning: 45 90% 60%;
     --warning-foreground: 0 0% 15%;
 
-    /* Friendly Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 75% 60%), hsl(285 55% 65%));
-    --gradient-secondary: linear-gradient(135deg, hsl(285 55% 65%), hsl(30 90% 65%));
-    --gradient-accent: linear-gradient(135deg, hsl(30 90% 65%), hsl(220 75% 70%));
-    --gradient-pink: linear-gradient(135deg, hsl(320 60% 75%), hsl(285 55% 70%));
-    --gradient-subtle: linear-gradient(180deg, hsl(220 15% 97%), hsl(220 15% 94%));
+    /* Gradients aligned to new palette */
+    --gradient-primary: linear-gradient(135deg, hsl(266 51% 41%), hsl(266 51% 55%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270 45% 92%), hsl(266 51% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(168 76% 42%), hsl(168 60% 55%));
+    --gradient-pink: linear-gradient(135deg, hsl(320 60% 75%), hsl(270 45% 85%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(266 60% 96%));
     
     /* Special Gradients */
-    --gradient-emergency: linear-gradient(135deg, hsl(355 75% 65%), hsl(30 90% 65%));
-    --gradient-success: linear-gradient(135deg, hsl(150 60% 55%), hsl(180 55% 60%));
-    --gradient-wellness: linear-gradient(135deg, hsl(180 55% 70%), hsl(220 75% 75%));
+    --gradient-emergency: linear-gradient(135deg, hsl(6 78% 57%), hsl(6 78% 47%));
+    --gradient-success: linear-gradient(135deg, hsl(168 76% 42%), hsl(168 60% 55%));
+    --gradient-wellness: linear-gradient(135deg, hsl(168 60% 70%), hsl(266 51% 55%));
 
     /* Soft Shadows */
     --shadow-card: 0 8px 32px -4px hsl(220 15% 25% / 0.08);
@@ -148,15 +148,15 @@
   }
 
   .medmap-button-primary {
-    @apply bg-gradient-primary text-primary-foreground font-bold py-4 px-8 rounded-2xl shadow-button transition-all duration-300 hover:shadow-glow hover:scale-105;
+    @apply bg-primary text-primary-foreground font-bold py-4 px-8 rounded-2xl shadow-button transition-all duration-300 hover:opacity-90 hover:scale-105;
   }
 
   .medmap-button-emergency {
-    @apply bg-gradient-emergency text-white font-bold py-6 px-8 rounded-2xl shadow-emergency transition-all duration-300 hover:scale-105 animate-pulse;
+    @apply bg-destructive text-white font-bold py-6 px-8 rounded-2xl shadow-emergency transition-all duration-300 hover:opacity-90 animate-pulse;
   }
 
   .medmap-gradient-text {
-    @apply bg-gradient-primary bg-clip-text text-transparent font-bold;
+    @apply text-primary font-bold;
   }
 
   .medmap-quick-card {

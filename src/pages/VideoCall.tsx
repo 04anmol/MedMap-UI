@@ -78,7 +78,7 @@ const VideoCall = () => {
       {/* Doctor's Video (Main) */}
       <div className="absolute inset-0">
         {isConnecting ? (
-          <div className="flex flex-col items-center justify-center h-full bg-gradient-primary">
+          <div className="flex flex-col items-center justify-center h-full bg-primary">
             <Avatar className="h-32 w-32 mb-6 border-4 border-white/20">
               <AvatarImage src={doctor.image} />
               <AvatarFallback className="bg-white/10 text-white text-4xl font-bold">
@@ -93,10 +93,10 @@ const VideoCall = () => {
               <Clock size={16} />
               <span>Connecting...</span>
             </div>
-            <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+            <div className="w-8 h-8 border-4 border-white/30 border-t-primary rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="relative h-full bg-gradient-to-br from-primary/20 to-secondary/20">
+          <div className="relative h-full bg-muted">
             {/* Simulated video feed background */}
             <div className="absolute inset-0 bg-black/20" />
             
@@ -142,9 +142,9 @@ const VideoCall = () => {
       </div>
 
       {/* User's Video (Picture-in-Picture) */}
-      <div className="absolute top-20 right-4 w-24 h-32 bg-gradient-secondary rounded-2xl border-2 border-white/20 overflow-hidden">
+      <div className="absolute top-20 right-4 w-24 h-32 bg-secondary rounded-2xl border-2 border-white/20 overflow-hidden">
         {isVideoOn ? (
-          <div className="relative h-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
+          <div className="relative h-full bg-accent flex items-center justify-center">
             <div className="text-white text-xs font-medium">You</div>
             {!isMicOn && (
               <div className="absolute top-2 left-2 w-5 h-5 bg-destructive rounded-full flex items-center justify-center">
@@ -177,7 +177,7 @@ const VideoCall = () => {
               className={cn(
                 "w-14 h-14 rounded-full border-2",
                 isMicOn 
-                  ? "bg-white/10 border-white/20 text-white hover:bg-white/20" 
+                  ? "bg-primary/10 border-primary/20 text-white hover:bg-primary/20" 
                   : "bg-destructive border-destructive text-white hover:bg-destructive/80"
               )}
             >
@@ -195,7 +195,7 @@ const VideoCall = () => {
               className={cn(
                 "w-14 h-14 rounded-full border-2",
                 isVideoOn 
-                  ? "bg-white/10 border-white/20 text-white hover:bg-white/20" 
+                  ? "bg-primary/10 border-primary/20 text-white hover:bg-primary/20" 
                   : "bg-destructive border-destructive text-white hover:bg-destructive/80"
               )}
             >
@@ -219,7 +219,7 @@ const VideoCall = () => {
               variant="ghost"
               size="lg"
               onClick={(e) => e.stopPropagation()}
-              className="w-14 h-14 rounded-full border-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="w-14 h-14 rounded-full border-2 bg-primary/10 border-primary/20 text-white hover:bg-primary/20"
             >
               <RotateCcw size={20} />
             </Button>
@@ -229,7 +229,7 @@ const VideoCall = () => {
               variant="ghost"
               size="lg"
               onClick={(e) => e.stopPropagation()}
-              className="w-14 h-14 rounded-full border-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="w-14 h-14 rounded-full border-2 bg-primary/10 border-primary/20 text-white hover:bg-primary/20"
             >
               <MessageCircle size={20} />
             </Button>
@@ -263,7 +263,7 @@ const VideoCall = () => {
                 key={bar}
                 className={cn(
                   "w-1 rounded-full transition-colors duration-200",
-                  bar <= 3 ? "bg-success h-3" : "bg-white/30 h-2"
+                  bar <= 3 ? "bg-success h-3" : "bg-foreground/30 h-2"
                 )}
               />
             ))}

@@ -193,7 +193,7 @@ const ResourceList = () => {
                     <div className="relative">
                       <Avatar className="h-16 w-16">
                         <AvatarImage src={doctor.image} />
-                        <AvatarFallback className="bg-gradient-primary text-white font-semibold">
+                        <AvatarFallback className="bg-primary text-white font-semibold">
                           <User size={24} />
                         </AvatarFallback>
                       </Avatar>
