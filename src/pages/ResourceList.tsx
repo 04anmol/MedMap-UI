@@ -161,7 +161,7 @@ const ResourceList = () => {
         </div>
         
         {/* Search and Filter */}
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -171,7 +171,7 @@ const ResourceList = () => {
               className="pl-10"
             />
           </div>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" className="w-full sm:w-auto">
             <Filter size={16} />
           </Button>
         </div>
@@ -188,9 +188,9 @@ const ResourceList = () => {
             </h2>
             <div className="space-y-4">
               {doctors.map((doctor) => (
-                <div key={doctor.id} className="medmap-resource-card">
-                  <div className="flex items-start gap-4">
-                    <div className="relative">
+                <div key={doctor.id} className="medmap-resource-card border border-primary/60 sm:border-0 bg-primary/5">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                    <div className="relative shrink-0">
                       <Avatar className="h-16 w-16">
                         <AvatarImage src={doctor.image} />
                         <AvatarFallback className="bg-primary text-white font-semibold">
@@ -203,14 +203,14 @@ const ResourceList = () => {
                       )} />
                     </div>
                     
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <h3 className="font-semibold text-base">{doctor.name}</h3>
-                          <p className="text-muted-foreground text-sm">{doctor.specialty}</p>
+                    <div className="flex-1 min-w-0 w-full">
+                      <div className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left justify-between gap-2 mb-2">
+                        <div className="min-w-0 w-full sm:w-auto">
+                          <h3 className="font-semibold text-base truncate w-full">{doctor.name}</h3>
+                          <p className="text-muted-foreground text-sm truncate w-full">{doctor.specialty}</p>
                         </div>
-                        <div className="text-right">
-                          <div className="flex items-center gap-1 text-warning">
+                        <div className="text-center sm:text-right shrink-0">
+                          <div className="flex items-center gap-1 text-warning justify-center sm:justify-end">
                             <Star className="h-4 w-4 fill-current" />
                             <span className="font-semibold">{doctor.rating}</span>
                           </div>
@@ -218,7 +218,47 @@ const ResourceList = () => {
                         </div>
                       </div>
                       
-                      <div className="flex items-center gap-4 mb-3">
+                      {/* Mobile 2x2 grid of details */}
+                      <div className="grid grid-cols-2 gap-0 mb-3 sm:hidden rounded-2xl overflow-hidden divide-x divide-y divide-primary/40 border border-primary/60 shadow-sm">
+                        <div className="text-center p-3 bg-primary/10 text-primary font-semibold">
+                          <div className="flex items-center justify-center gap-1 text-muted-foreground">
+                            <MapPin size={14} />
+                            <span className="text-xs font-medium">{doctor.distance}</span>
+                          </div>
+                        </div>
+                        <div className="text-center p-3 bg-primary/10 text-primary font-semibold">
+                          <div className="flex items-center justify-center gap-1 text-muted-foreground">
+                            <Clock size={14} />
+                            <span className="text-xs font-medium">{doctor.availability}</span>
+                          </div>
+                        </div>
+                        <div className="text-center p-3 bg-primary/10 text-primary font-semibold">
+                          <span className="text-xs text-primary">₹{doctor.consultationFee}</span>
+                        </div>
+                        <div className="text-center p-3 bg-primary/10 text-primary font-semibold">
+                          <Badge 
+                            variant={doctor.status === "online" ? "default" : "secondary"}
+                            className="text-[10px] py-0.5 px-2 font-semibold"
+                          >
+                            {doctor.status === "online" ? "Available" : "Busy"}
+                          </Badge>
+                        </div>
+                      </div>
+
+                      {/* Tablet meta row (simple), hidden on desktop */}
+                      <div className="hidden sm:flex lg:hidden items-center gap-4 mb-3">
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <MapPin size={14} />
+                          <span className="text-sm">{doctor.distance}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <Clock size={14} />
+                          <span className="text-sm">{doctor.availability}</span>
+                        </div>
+                      </div>
+
+                      {/* Desktop compact meta row */}
+                      <div className="hidden lg:flex items-center gap-4 mb-3">
                         <div className="flex items-center gap-1 text-muted-foreground">
                           <MapPin size={14} />
                           <span className="text-sm">{doctor.distance}</span>
@@ -229,10 +269,10 @@ const ResourceList = () => {
                         </div>
                       </div>
                       
-                      <p className="text-muted-foreground text-sm mb-3">{doctor.hospital}</p>
+                      <p className="text-muted-foreground text-sm mb-3 truncate text-center sm:text-left">{doctor.hospital}</p>
                       
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
+                      <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-3">
+                        <div className="hidden lg:flex items-center gap-2">
                           <Badge variant="secondary" className="text-xs">
                             ₹{doctor.consultationFee}
                           </Badge>
@@ -243,14 +283,14 @@ const ResourceList = () => {
                             {doctor.status === "online" ? "Available" : "Busy"}
                           </Badge>
                         </div>
-                        <div className="flex gap-2">
-                          <Button variant="outline" size="sm">
+                        <div className="flex gap-2 whitespace-nowrap justify-center sm:ml-auto">
+                          <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary/10">
                             <Phone size={14} className="mr-1" />
                             Call
                           </Button>
                           <Button 
                             size="sm" 
-                            className="medmap-button-primary"
+                            className="bg-primary text-primary-foreground hover:bg-primary/90"
                             onClick={() => navigate("/video-call")}
                           >
                             Consult
@@ -274,13 +314,13 @@ const ResourceList = () => {
             </h2>
             <div className="space-y-4">
               {hospitals.map((hospital) => (
-                <div key={hospital.id} className="medmap-resource-card">
-                  <div className="flex items-start justify-between mb-3">
+                <div key={hospital.id} className="medmap-resource-card border border-success/60 sm:border-0 bg-success/5">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-3">
                     <div>
                       <h3 className="font-semibold text-base">{hospital.name}</h3>
                       <p className="text-muted-foreground text-sm">{hospital.type}</p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-left sm:text-right">
                       <div className="flex items-center gap-1 text-warning">
                         <Star className="h-4 w-4 fill-current" />
                         <span className="font-semibold">{hospital.rating}</span>
@@ -293,7 +333,7 @@ const ResourceList = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-4 mb-3">
+                  <div className="flex flex-wrap items-center gap-4 mb-3">
                     <div className="flex items-center gap-1 text-muted-foreground">
                       <MapPin size={14} />
                       <span className="text-sm">{hospital.distance}</span>
@@ -304,31 +344,52 @@ const ResourceList = () => {
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-4 gap-2 mb-4">
-                    <div className="text-center p-2 bg-muted rounded-lg">
+                  {/* Mobile heavy 2x2 grid */}
+                  <div className="grid grid-cols-2 gap-0 mb-4 sm:hidden rounded-2xl overflow-hidden divide-x divide-y divide-success/40 border border-success/60 shadow-sm">
+                    <div className="text-center p-3 bg-success/10 text-foreground font-semibold">
+                      <Bed size={16} className="mx-auto mb-1 text-primary" />
+                      <p className="text-xs">ICU: {hospital.availability.icu}</p>
+                    </div>
+                    <div className="text-center p-3 bg-success/10 text-foreground font-semibold">
+                      <Wind size={16} className="mx-auto mb-1 text-secondary" />
+                      <p className="text-xs">O2: {hospital.availability.oxygen}</p>
+                    </div>
+                    <div className="text-center p-3 bg-success/10 text-foreground font-semibold">
+                      <Droplets size={16} className="mx-auto mb-1 text-accent" />
+                      <p className="text-xs">Blood: {hospital.availability.blood}</p>
+                    </div>
+                    <div className="text-center p-3 bg-success/10 text-foreground font-semibold">
+                      <Heart size={16} className="mx-auto mb-1 text-destructive" />
+                      <p className="text-xs">Vent: {hospital.availability.ventilators}</p>
+                    </div>
+                  </div>
+
+                  {/* Desktop grid only (tablet uses default light layout above) */}
+                  <div className="hidden lg:grid grid-cols-4 gap-2 mb-4">
+                    <div className="text-center p-2 bg-success/10 rounded-lg">
                       <Bed size={16} className="mx-auto mb-1 text-primary" />
                       <p className="text-xs font-medium">ICU: {hospital.availability.icu}</p>
                     </div>
-                    <div className="text-center p-2 bg-muted rounded-lg">
+                    <div className="text-center p-2 bg-success/10 rounded-lg">
                       <Wind size={16} className="mx-auto mb-1 text-secondary" />
                       <p className="text-xs font-medium">O2: {hospital.availability.oxygen}</p>
                     </div>
-                    <div className="text-center p-2 bg-muted rounded-lg">
+                    <div className="text-center p-2 bg-success/10 rounded-lg">
                       <Droplets size={16} className="mx-auto mb-1 text-accent" />
                       <p className="text-xs font-medium">Blood: {hospital.availability.blood}</p>
                     </div>
-                    <div className="text-center p-2 bg-muted rounded-lg">
+                    <div className="text-center p-2 bg-success/10 rounded-lg">
                       <Heart size={16} className="mx-auto mb-1 text-destructive" />
                       <p className="text-xs font-medium">Vent: {hospital.availability.ventilators}</p>
                     </div>
                   </div>
                   
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="flex-1">
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Button variant="outline" size="sm" className="flex-1 w-full sm:w-auto border-success text-success hover:bg-success/10">
                       <MapPin size={14} className="mr-1" />
                       Directions
                     </Button>
-                    <Button size="sm" className="flex-1 medmap-button-primary">
+                    <Button size="sm" className="flex-1 w-full sm:w-auto bg-success text-success-foreground hover:bg-success/90">
                       <Phone size={14} className="mr-1" />
                       Contact
                     </Button>
@@ -348,13 +409,13 @@ const ResourceList = () => {
             </h2>
             <div className="space-y-4">
               {ambulances.map((ambulance) => (
-                <div key={ambulance.id} className="medmap-resource-card">
-                  <div className="flex items-start justify-between mb-3">
+                <div key={ambulance.id} className="medmap-resource-card border border-destructive/60 sm:border-0 bg-destructive/5">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-3">
                     <div>
                       <h3 className="font-semibold text-base">{ambulance.name}</h3>
                       <p className="text-muted-foreground text-sm">{ambulance.type}</p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-left sm:text-right">
                       <div className="flex items-center gap-1 text-warning">
                         <Star className="h-4 w-4 fill-current" />
                         <span className="font-semibold">{ambulance.rating}</span>
@@ -368,7 +429,7 @@ const ResourceList = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-4 mb-3">
+                  <div className="flex flex-wrap items-center gap-4 mb-3">
                     <div className="flex items-center gap-1 text-muted-foreground">
                       <MapPin size={14} />
                       <span className="text-sm">{ambulance.distance}</span>
@@ -385,7 +446,7 @@ const ResourceList = () => {
                   </div>
                   
                   <Button 
-                    className="w-full medmap-button-primary"
+                    className="w-full bg-destructive text-destructive-foreground hover:bg-destructive/90"
                     disabled={ambulance.status === "busy"}
                     onClick={() => navigate("/emergency")}
                   >
