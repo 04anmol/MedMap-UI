@@ -19,10 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import doctorCharacter from "@/assets/doctor-character.png";
-import ambulanceIllustration from "@/assets/ambulance-illustration.png";
-import emergencyIllustration from "@/assets/emergency-illustration.png";
-import hospitalIllustration from "@/assets/hospital-illustration.png";
+ 
 
 const Home = () => {
   const navigate = useNavigate();
@@ -36,7 +33,6 @@ const Home = () => {
       description: "Emergency transport",
       path: "/resources?type=ambulance",
       gradient: "bg-gradient-emergency",
-      illustration: ambulanceIllustration,
       color: "text-red-600"
     },
     {
@@ -101,7 +97,7 @@ const Home = () => {
 
   return (
     <div className="px-4 pt-8 pb-4 min-h-screen bg-gradient-subtle">
-      {/* Welcome Header with Illustration */}
+      {/* Welcome Header */}
       <header className="relative mb-8">
         <div className="medmap-card bg-gradient-primary overflow-hidden relative">
           <div className="flex items-center justify-between relative z-10">
@@ -124,19 +120,10 @@ const Home = () => {
               <span className="text-white text-sm font-medium">Online</span>
             </div>
           </div>
-          
-          {/* Doctor Character Illustration */}
-          <div className="absolute -right-4 -bottom-2 opacity-30">
-            <img 
-              src={doctorCharacter} 
-              alt="Friendly doctor" 
-              className="w-24 h-24 object-contain"
-            />
-          </div>
         </div>
       </header>
 
-      {/* Emergency SOS Button with Illustration */}
+      {/* Emergency SOS Button */}
       <div className="mb-8 relative">
         <div className="medmap-card bg-gradient-emergency p-6 overflow-hidden relative">
           <div className="relative z-10">
@@ -157,19 +144,10 @@ const Home = () => {
               Request Emergency Help
             </Button>
           </div>
-          
-          {/* Emergency Illustration */}
-          <div className="absolute -right-2 -top-2 opacity-20">
-            <img 
-              src={emergencyIllustration} 
-              alt="Emergency medical" 
-              className="w-20 h-20 object-contain"
-            />
-          </div>
         </div>
       </div>
 
-      {/* Quick Access Cards with Illustrations */}
+      {/* Quick Access Cards */}
       <section className="mb-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-foreground">Quick Access</h2>
@@ -196,17 +174,6 @@ const Home = () => {
                   <span className="text-success text-xs font-medium">Available</span>
                 </div>
               </div>
-              
-              {/* Illustration for Ambulance card */}
-              {card.id === "ambulance" && (
-                <div className="absolute -right-2 -bottom-2 opacity-20">
-                  <img 
-                    src={card.illustration} 
-                    alt="Ambulance" 
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-              )}
             </div>
           ))}
         </div>
@@ -257,15 +224,6 @@ const Home = () => {
                 <div className="text-white/80 text-xs">Prescriptions</div>
               </div>
             </div>
-          </div>
-          
-          {/* Hospital Illustration */}
-          <div className="absolute -right-4 -bottom-2 opacity-20">
-            <img 
-              src={hospitalIllustration} 
-              alt="Hospital" 
-              className="w-20 h-20 object-contain"
-            />
           </div>
         </div>
       </section>
