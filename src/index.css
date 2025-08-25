@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MedMap Design System - Modern Emergency Medical App */
+
+@layer base {
+  :root {
+    /* MedMap Friendly Color Palette */
+    --background: 220 15% 97%;
+    --foreground: 215 20% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 20% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 20% 25%;
+
+    /* Soft Blue Primary */
+    --primary: 220 75% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 220 75% 75%;
+    --primary-glow: 220 75% 85%;
+
+    /* Gentle Violet Secondary */
+    --secondary: 285 55% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 285 55% 80%;
+
+    /* Warm Orange Accent */
+    --accent: 30 90% 65%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 30 90% 80%;
+
+    /* Soft Pink Support */
+    --pink: 320 60% 75%;
+    --pink-foreground: 0 0% 100%;
+
+    /* Soft Green Success */
+    --success: 150 60% 55%;
+    --success-foreground: 0 0% 100%;
+
+    --muted: 220 15% 94%;
+    --muted-foreground: 215 15% 50%;
+
+    --destructive: 355 75% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 94%;
+    --ring: 220 75% 70%;
+
+    --warning: 45 90% 60%;
+    --warning-foreground: 0 0% 15%;
+
+    /* Friendly Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 75% 60%), hsl(285 55% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(285 55% 65%), hsl(30 90% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(30 90% 65%), hsl(220 75% 70%));
+    --gradient-pink: linear-gradient(135deg, hsl(320 60% 75%), hsl(285 55% 70%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 15% 97%), hsl(220 15% 94%));
+    
+    /* Special Gradients */
+    --gradient-emergency: linear-gradient(135deg, hsl(355 75% 65%), hsl(30 90% 65%));
+    --gradient-success: linear-gradient(135deg, hsl(150 60% 55%), hsl(180 55% 60%));
+    --gradient-wellness: linear-gradient(135deg, hsl(180 55% 70%), hsl(220 75% 75%));
+
+    /* Soft Shadows */
+    --shadow-card: 0 8px 32px -4px hsl(220 15% 25% / 0.08);
+    --shadow-button: 0 4px 16px -2px hsl(220 75% 60% / 0.25);
+    --shadow-emergency: 0 8px 32px -4px hsl(355 75% 65% / 0.3);
+    --shadow-glow: 0 0 40px hsl(220 75% 75% / 0.4);
+
+    --radius: 1.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode optimized for MedMap */
+    --background: 240 20% 8%;
+    --foreground: 240 10% 95%;
+
+    --card: 240 15% 12%;
+    --card-foreground: 240 10% 95%;
+
+    --popover: 240 15% 12%;
+    --popover-foreground: 240 10% 95%;
+
+    --primary: 225 84% 55%;
+    --primary-foreground: 240 20% 8%;
+
+    --secondary: 280 65% 60%;
+    --secondary-foreground: 240 20% 8%;
+
+    --accent: 25 95% 65%;
+    --accent-foreground: 240 20% 8%;
+
+    --muted: 240 15% 15%;
+    --muted-foreground: 240 10% 65%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 240 20% 8%;
+
+    --border: 240 15% 20%;
+    --input: 240 15% 15%;
+    --ring: 225 84% 55%;
+
+    --success: 145 70% 55%;
+    --warning: 45 95% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* MedMap Component Styles - Friendly & Illustration-Rich */
+  .medmap-card {
+    @apply bg-card rounded-3xl p-6 shadow-card border-0 backdrop-blur-sm;
+  }
+
+  .medmap-button-primary {
+    @apply bg-gradient-primary text-primary-foreground font-bold py-4 px-8 rounded-2xl shadow-button transition-all duration-300 hover:shadow-glow hover:scale-105;
+  }
+
+  .medmap-button-emergency {
+    @apply bg-gradient-emergency text-white font-bold py-6 px-8 rounded-2xl shadow-emergency transition-all duration-300 hover:scale-105 animate-pulse;
+  }
+
+  .medmap-gradient-text {
+    @apply bg-gradient-primary bg-clip-text text-transparent font-bold;
+  }
+
+  .medmap-quick-card {
+    @apply medmap-card hover:shadow-glow transition-all duration-300 hover:scale-105 cursor-pointer active:scale-95 overflow-hidden relative;
+  }
+
+  .medmap-resource-card {
+    @apply medmap-card hover:border-primary/20 hover:shadow-lg transition-all duration-300;
+  }
+
+  /* Friendly gradient backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .bg-gradient-pink {
+    background: var(--gradient-pink);
+  }
+  
+  .bg-gradient-emergency {
+    background: var(--gradient-emergency);
+  }
+  
+  .bg-gradient-success {
+    background: var(--gradient-success);
+  }
+  
+  .bg-gradient-wellness {
+    background: var(--gradient-wellness);
+  }
+  
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  /* Playful animation classes */
+  .bounce-soft {
+    animation: bounce-soft 2s infinite;
+  }
+
+  @keyframes bounce-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .float-gentle {
+    animation: float-gentle 3s ease-in-out infinite;
+  }
+
+  @keyframes float-gentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  /* Friendly border styles */
+  .border-friendly {
+    @apply border-2 border-primary/20 hover:border-primary/40 transition-colors duration-200;
+  }
+}
