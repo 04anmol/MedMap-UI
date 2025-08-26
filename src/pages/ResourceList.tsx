@@ -351,7 +351,7 @@ const ResourceList = () => {
                       <p className="text-xs">ICU: {hospital.availability.icu}</p>
                     </div>
                     <div className="text-center p-3 bg-success/10 text-foreground font-semibold">
-                      <Wind size={16} className="mx-auto mb-1 text-secondary" />
+                      <Wind size={16} className="mx-auto mb-1 text-blue-600" />
                       <p className="text-xs">O2: {hospital.availability.oxygen}</p>
                     </div>
                     <div className="text-center p-3 bg-success/10 text-foreground font-semibold">
@@ -371,7 +371,7 @@ const ResourceList = () => {
                       <p className="text-xs font-medium">ICU: {hospital.availability.icu}</p>
                     </div>
                     <div className="text-center p-2 bg-success/10 rounded-lg">
-                      <Wind size={16} className="mx-auto mb-1 text-secondary" />
+                      <Wind size={16} className="mx-auto mb-1 text-blue-600" />
                       <p className="text-xs font-medium">O2: {hospital.availability.oxygen}</p>
                     </div>
                     <div className="text-center p-2 bg-success/10 rounded-lg">
@@ -385,11 +385,11 @@ const ResourceList = () => {
                   </div>
                   
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <Button variant="outline" size="sm" className="flex-1 w-full sm:w-auto border-success text-success hover:bg-success/10">
+                    <Button variant="outline" size="sm" className="flex-1 w-full sm:w-auto border-success text-success hover:bg-success/10 h-auto px-4 py-3 sm:h-9 sm:px-3 sm:py-0">
                       <MapPin size={14} className="mr-1" />
                       Directions
                     </Button>
-                    <Button size="sm" className="flex-1 w-full sm:w-auto bg-success text-success-foreground hover:bg-success/90">
+                    <Button size="sm" className="flex-1 w-full sm:w-auto bg-success text-success-foreground hover:bg-success/90 h-auto px-4 py-3 sm:h-9 sm:px-3 sm:py-0">
                       <Phone size={14} className="mr-1" />
                       Contact
                     </Button>

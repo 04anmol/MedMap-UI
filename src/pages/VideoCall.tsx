@@ -161,11 +161,11 @@ const VideoCall = () => {
 
       {/* Controls */}
       <div className={cn(
-        "absolute bottom-0 left-0 right-0 p-6 transition-all duration-300",
+        "absolute left-0 right-0 p-6 bottom-12 sm:bottom-6 z-40 transition-all duration-300",
         showControls ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       )}>
-        <div className="bg-black/80 backdrop-blur-xl rounded-2xl p-4">
-          <div className="flex items-center justify-center gap-6">
+        <div className="bg-black/80 backdrop-blur-xl rounded-2xl p-4 overflow-hidden">
+          <div className="flex items-center justify-center gap-3 sm:gap-6 flex-wrap">
             {/* Mic Toggle */}
             <Button
               variant="ghost"
@@ -175,7 +175,7 @@ const VideoCall = () => {
                 setIsMicOn(!isMicOn);
               }}
               className={cn(
-                "w-14 h-14 rounded-full border-2",
+                "w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2",
                 isMicOn 
                   ? "bg-primary/10 border-primary/20 text-white hover:bg-primary/20" 
                   : "bg-destructive border-destructive text-white hover:bg-destructive/80"
@@ -193,7 +193,7 @@ const VideoCall = () => {
                 setIsVideoOn(!isVideoOn);
               }}
               className={cn(
-                "w-14 h-14 rounded-full border-2",
+                "w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2",
                 isVideoOn 
                   ? "bg-primary/10 border-primary/20 text-white hover:bg-primary/20" 
                   : "bg-destructive border-destructive text-white hover:bg-destructive/80"
@@ -209,7 +209,7 @@ const VideoCall = () => {
                 e.stopPropagation();
                 handleEndCall();
               }}
-              className="w-16 h-16 rounded-full bg-destructive hover:bg-destructive/80 text-white border-2 border-destructive"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-destructive hover:bg-destructive/80 text-white border-2 border-destructive"
             >
               <Phone size={24} className="rotate-[135deg]" />
             </Button>
@@ -219,7 +219,7 @@ const VideoCall = () => {
               variant="ghost"
               size="lg"
               onClick={(e) => e.stopPropagation()}
-              className="w-14 h-14 rounded-full border-2 bg-primary/10 border-primary/20 text-white hover:bg-primary/20"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 bg-primary/10 border-primary/20 text-white hover:bg-primary/20"
             >
               <RotateCcw size={20} />
             </Button>
@@ -229,7 +229,7 @@ const VideoCall = () => {
               variant="ghost"
               size="lg"
               onClick={(e) => e.stopPropagation()}
-              className="w-14 h-14 rounded-full border-2 bg-primary/10 border-primary/20 text-white hover:bg-primary/20"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 bg-primary/10 border-primary/20 text-white hover:bg-primary/20"
             >
               <MessageCircle size={20} />
             </Button>
